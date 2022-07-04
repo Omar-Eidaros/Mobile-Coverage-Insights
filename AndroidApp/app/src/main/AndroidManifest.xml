@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ITICellular">
         <activity
+            android:name=".ApplicationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
