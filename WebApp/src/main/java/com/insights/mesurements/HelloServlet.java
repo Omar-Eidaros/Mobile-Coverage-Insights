@@ -1,4 +1,4 @@
-package com.insights.inshight;
+package com.insights.mesurements;
 
 import java.io.*;
 import javax.servlet.http.*;

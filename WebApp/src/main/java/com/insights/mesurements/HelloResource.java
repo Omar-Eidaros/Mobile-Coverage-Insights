@@ -1,4 +1,4 @@
-package com.insights.inshight;
+package com.insights.mesurements;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

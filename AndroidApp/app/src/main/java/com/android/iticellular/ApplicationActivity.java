@@ -5,15 +5,22 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.telephony.CellIdentityGsm;
 import android.telephony.CellIdentityLte;
 import android.telephony.CellIdentityWcdma;
@@ -102,6 +109,68 @@ public class ApplicationActivity extends AppCompatActivity implements Navigation
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout , toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NetworkInfoFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_network);
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+           ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+           ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},1);
+        } else {
+            requestLocationUpdate();
+        }
+
+        try {
+            setParameters(telephonyManager,sm,0);
+            setDeviceParameters();
+            getSlotCellInfo(0);
+            firstSignalStrength = signalStrength;
+            firstSIMInfo = setSIMInfo();
+            firstNetworkInformation = setNetworkInfo();
+            firstSIM.put("operator", operator);
+            firstSIM.put("country", networkCountryISO);
+            firstSIM.put("device_model", Build.MANUFACTURER);
+            firstSIM.put("imei", IMEINumber);
+            firstSIM.put("imsi", IMSINumber);
+            firstSIM.put("cell_type", networkType);
+            firstSIM.put("cell_id", cellID);
+            firstSIM.put("mnc",MNC);
+            firstSIM.put("mcc",MCC);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (NullPointerException ex){
+            firstSIMInfo = "You don't have SIM card in the first slot!";
+        }
+
+        try {
+            setParameters(telephonyManager,sm,1);
+            setDeviceParameters();
+            getSlotCellInfo(1);
+            secondSignalStrength = signalStrength;
+            secondSIMInfo = setSIMInfo();
+            secondNetworkInformation = setNetworkInfo();
+            secondSIM.put("operator", operator);
+            secondSIM.put("country", networkCountryISO);
+            secondSIM.put("device_model", Build.MANUFACTURER);
+            secondSIM.put("imei", IMEINumber);
+            secondSIM.put("imsi", IMSINumber);
+            secondSIM.put("cell_type", networkType);
+            secondSIM.put("cell_id", cellID);
+            secondSIM.put("mnc",MNC);
+            secondSIM.put("mcc",MCC);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (NullPointerException ex){
+            firstSIMInfo = "You don't have SIM card in the second slot!";
+        }
+
+        getPhoneType();
+        setDeviceParameters();
+        mobilePhoneInformation = setDeviceInfo();
 
     }
 
@@ -157,7 +226,7 @@ public class ApplicationActivity extends AppCompatActivity implements Navigation
         return null;
     }
 
-    private static String checkCellType(CellInfo cellInfo) {
+    public static String checkCellType(CellInfo cellInfo) {
 
         if (cellInfo instanceof CellInfoWcdma) {
             networkType = "W-CDMA";
@@ -191,5 +260,112 @@ public class ApplicationActivity extends AppCompatActivity implements Navigation
     public static String getDefaults(String key, Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(key,"");
+    }
+
+    @SuppressLint("MissingPermission")
+    public void requestLocationUpdate() {
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000 * 60, 0, new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull android.location.Location location) {
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
+                try {
+                    firstSIM.put("longitude", longitude);
+                    firstSIM.put("latitude", latitude);
+                    secondSIM.put("longitude", longitude);
+                    secondSIM.put("latitude", latitude);
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                }
+                startService(new Intent(getApplicationContext(), BackgroundService.class));
+            }
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
+            @Override
+            public void onProviderEnabled(@NonNull String provider) {}
+            @Override
+            public void onProviderDisabled(@NonNull String provider) {}
+        });
+    }
+
+    @SuppressLint({"MissingPermission", "NewApi"})
+    public void setParameters(TelephonyManager tm, SubscriptionManager sm, int simSlot) {
+
+        subscriptionInfo = tm.createForSubscriptionId(sm.getActiveSubscriptionInfoForSimSlotIndex(simSlot).getSubscriptionId());
+        cellInfo = subscriptionInfo.getAllCellInfo();
+        try {
+            IMSINumber = subscriptionInfo.getSubscriberId();
+        } catch (SecurityException ex) {
+            IMSINumber = "Blocked By Google for Android 10+";
+        }
+        operator = subscriptionInfo.getSimOperatorName();
+        networkCountryISO = subscriptionInfo.getNetworkCountryIso();
+        SIMCountryISO = subscriptionInfo.getSimCountryIso();
+        softwareVersion = subscriptionInfo.getDeviceSoftwareVersion();
+        isRoaming = tm.isNetworkRoaming();
+        isDeviceRoaming = isRoaming ? "YES" : "NO";
+    }
+
+    public void setDeviceParameters() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                IMEINumber = telephonyManager.getImei();
+            }
+        } catch (SecurityException ex) {
+            IMEINumber = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        }
+    }
+
+    public String setSIMInfo() {
+        simInfo = "";
+        simInfo += "\n operator: " + operator;
+        simInfo += "\n Network Country ISO: " + networkCountryISO;
+        simInfo += "\n Software Version: " + softwareVersion;
+        simInfo += "\n IMSI Number: " + IMSINumber;
+        simInfo += "\n MNC: " + MNC;
+        simInfo += "\n MCC: " + MCC;
+
+        return simInfo;
+    }
+
+    public String setNetworkInfo() {
+        networkInfo = "";
+        networkInfo += "\nRoaming: " + isDeviceRoaming;
+        networkInfo += "\nNetwork Type: " + networkType;
+        return networkInfo;
+    }
+
+    public void getPhoneType() {
+        int phoneType = telephonyManager.getPhoneType();
+
+        switch (phoneType) {
+            case (TelephonyManager.PHONE_TYPE_CDMA):
+                strPhoneType = "CDMA";
+                break;
+            case (TelephonyManager.PHONE_TYPE_GSM):
+                strPhoneType = "GSM";
+                break;
+            case (TelephonyManager.PHONE_TYPE_SIP):
+                strPhoneType = "SIP";
+                break;
+            case (TelephonyManager.PHONE_TYPE_NONE):
+                strPhoneType = "NONE";
+                break;
+        }
+    }
+
+    public String setDeviceInfo() {
+        deviceInfo = "device details:\n";
+        deviceInfo += "\nDevice ID: " + IMEINumber;
+        return deviceInfo;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
