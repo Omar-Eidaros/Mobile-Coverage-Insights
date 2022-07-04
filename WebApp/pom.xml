@@ -66,6 +66,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio -->
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>8.32.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

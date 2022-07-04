@@ -36,7 +36,6 @@
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.woodstox:woodstox-core:6.2.6" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.woodstox:stax2-api:4.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ws.xmlschema:xmlschema-core:2.2.5" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:2.1.6" level="project" />
@@ -65,7 +64,6 @@
     <orderEntry type="library" name="Maven: org.glassfish.jersey.ext:jersey-entity-filtering:2.34" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.12.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.inject:jersey-hk2:2.34" level="project" />
@@ -82,5 +80,21 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.twilio.sdk:twilio:8.32.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.7" level="project" />
+    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt-api:0.11.2" level="project" />
+    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt-jackson:0.11.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.jsonwebtoken:jjwt-impl:0.11.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
+    <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.woodstox:stax2-api:4.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
+    <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
   </component>
 </module>

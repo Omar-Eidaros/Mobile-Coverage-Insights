@@ -5,6 +5,7 @@ import com.insights.mesurements.DataBase;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 @XmlRootElement
 
@@ -51,23 +52,18 @@ public class Verification {
 					result = db.DML("Update verification set verifCode = '" + ver.getVerifCode() + "' where msisdn='"
 							+ ver.getMsisdn() + "';");
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
-
-			else {
+			} else {
 				try {
 					result = db.DML("Insert into  verification (msisdn,verifCode) VALUES ('" + ver.getMsisdn() + "','"
 							+ ver.getVerifCode() + "');");
 
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		db.disconnect();
@@ -85,13 +81,33 @@ public class Verification {
 			if (rs.next()) {
 				y = rs.getString("count");
 			}
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		db.disconnect();
 		System.out.print(y);
 		return y;
+	}
+
+	public void sendCode(Verification ver){
+		ver.setVerifCode(ver.generateCode(5));
+		System.out.println(ver.verifCode);
+		insertVerif(ver);
+		String content = "Your Verfication Code is: " + ver.getVerifCode();
+		TwilioClass.createMessage(ver.getMsisdn(), content);
+
+	}
+
+	public String generateCode(int length){
+
+		String numbers = "0123456789";
+		Random random = new Random();
+		char[] code = new char[length];
+
+		for (int i=0; i < length; i++)
+		{
+			code[i] = numbers.charAt(random.nextInt(numbers.length()));
+		}
+		return code.toString();
 	}
 }

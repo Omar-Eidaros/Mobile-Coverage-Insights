@@ -1,17 +1,16 @@
 package com.insights.mesurements;
 
+import javax.ws.rs.DELETE;
 import java.sql.*;
 import java.util.Properties;
 
 public class DataBase {
 
-    // init database constants
-//    private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-   private static final String DATABASE_URL = "jdbc:postgresql://batyr.db.elephantsql.com:5432/osaucpzr";
-    private static final String USERNAME = "osaucpzr";
-    private static final String PASSWORD = "cUEsju_L6bGAdmEuTjryKwPZbuN4qYh7";
+    private static final String DATABASE_URL = "jdbc:postgresql://bj7rwhghwwqosiqsms9h-postgresql.services.clever-cloud.com:5432/bj7rwhghwwqosiqsms9h";
+    private static final String USERNAME = "unjxtkqihomy5nurhj1c";
+    private static final String PASSWORD = "J815kWnvzd3sw9A2ThWy";
 
- // init connection object
+    // init connection object
     private Connection connection;
 
     // init properties object
@@ -25,25 +24,16 @@ public class DataBase {
     private Properties getProperties() {
         if (properties == null) {
             properties = new Properties();
-
             properties.setProperty("user", USERNAME);
-
             properties.setProperty("password", PASSWORD);
         }
-
         return properties;
     }
 
-    /**
-     * Connect to the database
-     *
-     * @return Connection
-     */
     public Connection connect() {
         if (connection == null) {
             try {
                 //  Class.forName(DATABASE_DRIVER);
-
                 connection = (Connection) DriverManager.getConnection(DATABASE_URL, getProperties());
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -52,9 +42,14 @@ public class DataBase {
         return connection;
     }
 
-    /**
-     * Disconnect database
-     */
+    // Return the result set when a correct SQL statement is provided
+    public ResultSet select(String query) throws SQLException {
+        statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        return resultSet;
+    }
+
+     //Disconnect database
     public void disconnect() {
         if (connection != null) {
             try {
@@ -66,43 +61,16 @@ public class DataBase {
                     prepStatement.close();
                 }
                 connection = null;
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    /**
-     * Return the result set when a correct SQL statement is provided
-     *
-     * @param query
-     * @return
-     * @throws SQLException
-     */
-    public ResultSet select(String query) throws SQLException {
-        statement = connection.createStatement();
-
-        ResultSet resultSet = statement.executeQuery(query);
-
-        return resultSet;
-    }
-
-    /**
-     * Return the status when a SQL query is provided for INSERT, UPDATE or
-     * DELETE
-     *
-     * @param query
-     * @return
-     * @throws SQLException
-     */
+    // Return the status when a SQL query is provided for INSERT, UPDATE or DELETE
     public int DML(String query) throws SQLException {
         prepStatement = connection.prepareStatement(query, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
         int result = prepStatement.executeUpdate();
         return result;
     }
-    
-    
-  
-  
 }
