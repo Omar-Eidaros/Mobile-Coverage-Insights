@@ -10,9 +10,9 @@ public class TwilioClass {
     private static final String AUTH_TOKEN = "a936654c22ae735273b587ea0ed9c9c8";
     private static final String PHONE_NUM = "+19897955893";
 
-    public static void createMessage(String msisdn, String content){
+    public static void createMessage(String msisdn, String verifyCode){
         Twilio.init(ACCOUNT_SID,AUTH_TOKEN);
-        Message message = Message.creator(new PhoneNumber("+2"+msisdn), new PhoneNumber(PHONE_NUM), content).create();
+        Message message = Message.creator(new PhoneNumber("+2"+msisdn), new PhoneNumber(PHONE_NUM), "Your Verification Code is: " + verifyCode).create();
 
         System.out.println(message.getSid());
     }
