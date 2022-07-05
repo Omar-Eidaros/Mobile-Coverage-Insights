@@ -1,9 +1,12 @@
+package com.insights.apis;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import com.insights.verification.*;
 
 @Path("/verification")
 public class VerficationAPI {
@@ -21,6 +24,6 @@ public class VerficationAPI {
         } else {
             result ="Verification Code not received yet";
         }
-
+        return Response.status(200).status(state).build();
     }
 }

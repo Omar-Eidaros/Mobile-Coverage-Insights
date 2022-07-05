@@ -1,4 +1,4 @@
-package com.iti.measurement;
+package com.insights.mesurements;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

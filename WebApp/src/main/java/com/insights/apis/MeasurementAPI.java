@@ -1,5 +1,4 @@
-package com.iti.measurement;
-
+package com.insights.apis;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
+import com.insights.mesurements.*;
 
 
 @Path("/DML")

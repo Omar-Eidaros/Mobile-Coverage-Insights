@@ -1,4 +1,4 @@
-package com.iti.analytics;
+package com.insights.apis;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -16,11 +16,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
+import com.insights.mesurements.DataBase;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.iti.measurement.DataBase;
-import com.iti.measurement.Measurement;
+
 
 @Path("/")
 
@@ -191,11 +191,11 @@ public class AnalyticsAPI {
 		  DataBase db = new DataBase();
 			db.connect();
 			ResultSet rs;
-			List<OperatorCode> opertorCode = new ArrayList<OperatorCode>();
+			List<com.iti.analytics.OperatorCode> opertorCode = new ArrayList<com.iti.analytics.OperatorCode>();
 			try {
 				rs = db.select("select distinct country,operator,mcc,mnc from measurements;");
 				while(rs.next()){
-					opertorCode.add(new OperatorCode(rs.getString("mcc"),rs.getString("mnc"),rs.getString("country"),rs.getString("operator")));
+					opertorCode.add(new com.iti.analytics.OperatorCode(rs.getString("mcc"),rs.getString("mnc"),rs.getString("country"),rs.getString("operator")));
 			    }
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
@@ -203,7 +203,7 @@ public class AnalyticsAPI {
 			}
 			db.disconnect();
 			try{
-				GenericEntity<List<OperatorCode>> genericEntity = new GenericEntity<List<OperatorCode>>(opertorCode){};
+				GenericEntity<List<com.iti.analytics.OperatorCode>> genericEntity = new GenericEntity<List<com.iti.analytics.OperatorCode>>(opertorCode){};
 				return Response.ok(genericEntity, MediaType.APPLICATION_JSON).header("Access-Control-Allow-Origin", "*").build();
 			} catch (Exception e) {
 				return Response.status(Response.Status.BAD_REQUEST).build();
