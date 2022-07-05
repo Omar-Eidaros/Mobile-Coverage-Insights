@@ -1,0 +1,12 @@
+com\insights\verification\Verification.class
+com\insights\apis\MeasurementAPI.class
+com\insights\apis\MeasurementAPI$1.class
+com\insights\mesurements\Counter.class
+com\insights\verification\TwilioClass.class
+com\iti\analytics\OperatorCode.class
+com\insights\apis\AnalyticsAPI$1.class
+com\insights\mesurements\DataBase.class
+com\insights\apis\MeasurementAPI$2.class
+com\insights\mesurements\Measurement.class
+com\insights\apis\AnalyticsAPI.class
+com\insights\apis\VerificationAPI.class

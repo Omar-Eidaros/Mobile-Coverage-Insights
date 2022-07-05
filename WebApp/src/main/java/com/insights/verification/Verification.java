@@ -70,7 +70,7 @@ public class Verification {
 		return result;
 	}
 
-	String checkCode(Verification ver) {
+	public String checkCode(Verification ver) {
 		DataBase db = new DataBase();
 		String y = null;
 		db.connect();
