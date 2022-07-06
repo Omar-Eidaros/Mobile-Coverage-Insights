@@ -59,6 +59,10 @@
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.25.0-GA" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-client:2.34" />
           <element id="library" level="project" name="Maven: org.glassfish.hk2.external:jakarta.inject:2.6.1" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-servlet:1.19.4" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-server:1.19.4" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.19.4" />
+          <element id="library" level="project" name="Maven: javax.ws.rs:jsr311-api:1.1.1" />
           <element id="library" level="project" name="Maven: com.twilio.sdk:twilio:8.32.0" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.15" />
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.7" />
