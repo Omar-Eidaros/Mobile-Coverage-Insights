@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Vodafone</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="..\files\bower_components\bootstrap\css\bootstrap.min.css">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="..\files\assets\icon\feather\css\feather.css">
+    <link rel="stylesheet" type="text/css" href="..\files\assets\icon\themify-icons\themify-icons.css">
+
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="..\files\assets\css\style.css">
+    <link rel="stylesheet" type="text/css" href="..\files\assets\css\jquery.mCustomScrollbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="..\files\assets\css\style.css">
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+
+                    <div class="navbar-logo" style="height: 59px;">
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a>
+                        <a href="index-1.htm">
+                            <img class="img-fluid" src="..\files\assets\images\logo.png" alt="Theme-Logo" width="30%" style="float: left;">
+                            <li class="pcoded-hasmenu active pcoded-trigger">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-mtext" style="opacity: 1;
+                                    visibility: visible;
+                                    position: absolute;
+                                    font-weight: bold;
+                                    font-size: large;
+                                    top: 15px;
+                                    left:62px;
+                                    background: #404E67;
+                                    color: #dcdcdc;
+                                    border-bottom-color: #404E67;">RF Coverage</span>
+                                </a>
+                            </li>
+                        </a>
+                        <a class="mobile-options">
+                            <i class="feather icon-more-horizontal"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group">
+                                        <span class="input-group-addon search-close"><i
+                                                class="feather icon-x"></i></span>
+                                        <input type="text" id="address-search" class="form-control">
+                                        <span class="input-group-addon search-btn">
+                                            <i class="feather icon-search" id="search-btn">                                                
+                                            </i>
+                                        
+                                    </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#!" onclick="javascript:toggleFullScreen()">
+                                    <i class="feather icon-maximize full-screen"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                       <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar">
+                        <div class="pcoded-inner-navbar main-menu">
+                            <div class="pcoded-navigatio-lavel">Navigation</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="index.html">
+                                                <span class="pcoded-mtext">Home</span>
+                                            </a>
+                                        </li>
+
+                                        <li class=" ">
+                                            <a href="dashboard-analytics.html">
+                                                <span class="pcoded-mtext">Analytics</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="ti-signal"></i></span>
+                                        <span class="pcoded-mtext">Operators</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="etisalat.html">
+                                                <span class="pcoded-mtext">Etisalat</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="">
+                                            <a href="orange.html">
+                                                <span class="pcoded-mtext">Orange</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="active">
+                                            <a href="vodafon.html">
+                                                <span class="pcoded-mtext">Vodafone</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="">
+                                            <a href="we.html">
+                                                <span class="pcoded-mtext">We</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">App</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class=" ">
+                                    <a href="aboutApp.html">
+                                        <span class="pcoded-micon"><i class="feather icon-message-square"></i></span>
+                                        <span class="pcoded-mtext">About</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Documentation</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="">
+                                    <a href="documentation.html">
+                                        <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
+                                        <span class="pcoded-mtext">Documentation</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <!-- task, page, download counter  start -->
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-yellow update-card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-end">
+                                                            <div class="col-8">
+                                                                <h4 class="text-white" id='countries'>1</h4>
+                                                                <h6 class="text-white m-b-0">countries</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <canvas id="update-chart-1" height="50"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <p class="text-white m-b-0" id="update-time"><i
+                                                                class="feather icon-clock text-white f-14 m-r-10"></i>update
+                                                            : <span class="update-time"></span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-green update-card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-end">
+                                                            <div class="col-8">
+                                                                <h4 class="text-white" id="telecom-operators"></h4>
+                                                                <h6 class="text-white m-b-0">Operators</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <canvas id="update-chart-2" height="50"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <p class="text-white m-b-0" ><i
+                                                                class="feather icon-clock text-white f-14 m-r-10"></i>update
+                                                            : <span class="update-time">12:00 am</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-pink update-card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-end">
+                                                            <div class="col-8">
+                                                                <h4 class="text-white" id="cells">3</h4>
+                                                                <h6 class="text-white m-b-0">Cells</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <canvas id="update-chart-3" height="50"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <p class="text-white m-b-0" ><i
+                                                                class="feather icon-clock text-white f-14 m-r-10"></i>update
+                                                            :<span class="update-time">12:00 am</span>></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-lite-green update-card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-end">
+                                                            <div class="col-8">
+                                                                <h4 class="text-white" id="measurements">255</h4>
+                                                                <h6 class="text-white m-b-0">Measurements</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <canvas id="update-chart-4" height="50"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer" >
+                                                        <p class="text-white m-b-0"><i
+                                                                class="feather icon-clock text-white f-14 m-r-10"></i>update
+                                                            : <span class="update-time">12:00 am</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- task, page, download counter  end -->
+
+                                            <!--  sale analytics start -->
+                                            <div class="">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h2>RF Coverage</h2>
+
+                                                        <div class="card-header-right">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-center align-items-center"
+                                                        style="display: flex; justify-content: center; align-items: center; height: 100vh">
+                                                        <div id="mapid" style="bottom:5vh;width:90%;height:92vh;"></div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- social download  start -->
+                                            <div class="col-xl-4 col-md-6">
+                                                <div class="card social-card bg-simple-c-blue">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <i
+                                                                    class="feather icon-mail f-34 text-c-blue social-icon"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h6 class="m-b-0">Mail</h6>
+
+                                                                <p class="m-b-0">Lorem Ipsum is simply dummy text of the
+                                                                    printing</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#!" class="download-icon"><i
+                                                            class="feather icon-arrow-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-md-6">
+                                                <div class="card social-card bg-simple-c-pink">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <i
+                                                                    class="feather icon-twitter f-34 text-c-pink social-icon"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h6 class="m-b-0">twitter</h6>
+
+                                                                <p class="m-b-0">Lorem Ipsum is simply dummy text of the
+                                                                    printing</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#!" class="download-icon"><i
+                                                            class="feather icon-arrow-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-md-12">
+                                                <div class="card social-card bg-simple-c-green">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <i
+                                                                    class="feather icon-instagram f-34 text-c-green social-icon"></i>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h6 class="m-b-0">Instagram</h6>
+
+                                                                <p class="m-b-0">Lorem Ipsum is simply dummy text of the
+                                                                    printing</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#!" class="download-icon"><i
+                                                            class="feather icon-arrow-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <!-- social download  end -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Required Jquery -->
+    <!-- <script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js"></script> -->
+    <script type="text/javascript" src="..\files\bower_components\jquery\js\jquery.min.js"></script>
+    <script type="text/javascript" src="..\files\bower_components\jquery-ui\js\jquery-ui.min.js"></script>
+    <script type="text/javascript" src="..\files\bower_components\popper.js\js\popper.min.js"></script>
+    <script type="text/javascript" src="..\files\bower_components\bootstrap\js\bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="..\files\bower_components\jquery-slimscroll\js\jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="..\files\bower_components\modernizr\js\modernizr.js"></script>
+    <!-- Chart js -->
+    <script type="text/javascript" src="..\files\bower_components\chart.js\js\Chart.js"></script>
+    <!-- amchart js -->
+    <script src="..\files\assets\pages\widget\amchart\amcharts.js"></script>
+    <script src="..\files\assets\pages\widget\amchart\serial.js"></script>
+    <script src="..\files\assets\pages\widget\amchart\light.js"></script>
+    <script src="..\files\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="..\files\assets\js\SmoothScroll.js"></script>
+    <script src="..\files\assets\js\pcoded.min.js"></script>
+    <!-- custom js -->
+    <script src="..\files\assets\js\vartical-layout.min.js"></script>
+    <script type="text/javascript" src="..\files\assets\pages\dashboard\custom-dashboard.js"></script>
+    <script type="text/javascript" src="..\files\assets\js\script.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+    <script src="..\files\assets\js\vodafone.js"></script>
+</body>
+
+</html>
