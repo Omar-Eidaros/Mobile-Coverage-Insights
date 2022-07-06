@@ -104,13 +104,13 @@ public class MainActivity extends AppCompatActivity {
 
     // Switching between Activities
     private void switchToVerifyActivity() {
-        Intent switchActivityIntent = new Intent(this, com.android.iticellular.VerificationActivity.class);
+        Intent switchActivityIntent = new Intent(this, com.android.iticellular.VerficationActivity.class);
         switchActivityIntent.putExtra("phoneNum", phoneNumber.getText().toString());
         startActivity(switchActivityIntent);
     }
 
     private void switchToAppActivity() {
-        Intent switchActivityIntent = new Intent(this, com.android.iticellular.VerificationActivity.class);
+        Intent switchActivityIntent = new Intent(this, com.android.iticellular.VerficationActivity.class);
         startActivity(switchActivityIntent);
     }
 
