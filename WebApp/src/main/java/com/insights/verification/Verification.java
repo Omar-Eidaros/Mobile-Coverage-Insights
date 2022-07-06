@@ -89,33 +89,6 @@ public class Verification {
 		return y;
 	}
 
-	public int sendCode(Verification ver){
-
-		//generate the user id and verification code
-		ver.setVerifCode(ver.generateCode(5));
-		ver.setId(Integer.parseInt(ver.generateCode(3)));
-
-		System.out.println(ver.getVerifCode());
-		System.out.println(ver.getMsisdn());
-		System.out.println(ver.getId());
-
-		// Insert generated id and code with msisdn to db
-		DataBase db = new DataBase();
-		int result = -1;
-		if (ver.getId() != 0) {
-			try {
-				result = db.DML("Insert into verification (id) values (" + ver.getId() + ");");
-				ver.insertVerif(ver);
-				TwilioClass.createMessage(ver.getMsisdn(), ver.getVerifCode());
-			} catch (SQLException e) {
-				System.out.println("There is error in Insert Statement");
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("Check ID insertion !!!");
-		}
-		return result;
-	}
 
 	public String generateCode(int length){
 
