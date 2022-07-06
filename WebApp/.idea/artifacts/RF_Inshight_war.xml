@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="inshight-1.0-SNAPSHOT.war">
+    <root id="archive" name="inshight.war">
       <element id="artifact" artifact-name="RF-Inshight:war exploded" />
     </root>
   </artifact>

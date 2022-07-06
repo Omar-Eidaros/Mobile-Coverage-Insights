@@ -1,4 +1,4 @@
-package com.iti.analytics;
+package com.insights.analytic;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
