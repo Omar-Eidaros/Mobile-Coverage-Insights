@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String saveData = data;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = /;
+        String URL = "http://192.168.1.2:8080/verification/sendCode";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("msisdn", saveData);
