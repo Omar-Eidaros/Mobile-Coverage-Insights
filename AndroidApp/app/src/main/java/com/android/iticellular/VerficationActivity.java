@@ -91,7 +91,7 @@ public class VerficationActivity extends AppCompatActivity {
         final String phone = phoneNum.getString("phone");
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            String URL = "https://immense-journey-36861.herokuapp.com/verification/isCodeValid";
+            String URL = "http://192.168.1.2:8080/RF_insight/api/verification/isCodeValid";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("msisdn", phone);
             jsonBody.put("verifCode", savedata);
