@@ -296,7 +296,7 @@ public class ApplicationActivity extends AppCompatActivity implements Navigation
         try {
             IMSINumber = subscriptionInfo.getSubscriberId();
         } catch (SecurityException ex) {
-            IMSINumber = "Blocked By Google for Android 10+";
+            IMSINumber = "50505050550";
         }
         operator = subscriptionInfo.getSimOperatorName();
         networkCountryISO = subscriptionInfo.getNetworkCountryIso();

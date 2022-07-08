@@ -1,25 +1,25 @@
 package com.insights.analytic;
 
+
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import com.insights.mesurements.DataBase;
+import jakarta.ws.rs.Path;
+
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.GenericEntity;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-
-import com.insights.mesurements.DataBase;
-import org.codehaus.jackson.map.ObjectMapper;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 @Path("/")
@@ -162,7 +162,7 @@ public class AnalyticsAPI {
 		 HashMap<String, String> result = new HashMap<String, String>();
 		 ResultSet rs;
 			try {
-				rs = db.select("select device_model,count(distinct imei) from measurements where operator ILIKE '"+operator+"' group by device_model;");
+				rs = db.select("select device_model,count(distinct imei) from measurements where operator LIKE '"+operator+"' group by device_model;");
 				while(rs.next()){
 			    	result.put(rs.getString("device_model"),rs.getString("count"));
 			    }
@@ -191,11 +191,11 @@ public class AnalyticsAPI {
 		  DataBase db = new DataBase();
 			db.connect();
 			ResultSet rs;
-			List<com.iti.analytics.OperatorCode> opertorCode = new ArrayList<com.iti.analytics.OperatorCode>();
+			List<OperatorCode> opertorCode = new ArrayList<OperatorCode>();
 			try {
 				rs = db.select("select distinct country,operator,mcc,mnc from measurements;");
 				while(rs.next()){
-					opertorCode.add(new com.iti.analytics.OperatorCode(rs.getString("mcc"),rs.getString("mnc"),rs.getString("country"),rs.getString("operator")));
+					opertorCode.add(new OperatorCode(rs.getString("mcc"),rs.getString("mnc"),rs.getString("country"),rs.getString("operator")));
 			    }
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
@@ -203,7 +203,7 @@ public class AnalyticsAPI {
 			}
 			db.disconnect();
 			try{
-				GenericEntity<List<com.iti.analytics.OperatorCode>> genericEntity = new GenericEntity<List<com.iti.analytics.OperatorCode>>(opertorCode){};
+				GenericEntity<List<OperatorCode>> genericEntity = new GenericEntity<List<OperatorCode>>(opertorCode){};
 				return Response.ok(genericEntity, MediaType.APPLICATION_JSON).header("Access-Control-Allow-Origin", "*").build();
 			} catch (Exception e) {
 				return Response.status(Response.Status.BAD_REQUEST).build();

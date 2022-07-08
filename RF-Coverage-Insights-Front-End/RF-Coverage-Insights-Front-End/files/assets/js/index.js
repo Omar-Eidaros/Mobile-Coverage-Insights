@@ -60,7 +60,7 @@ function responseManipulation(response) {
 }
 function DataShow() {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://immense-journey-36861.herokuapp.com/measurment/DML/getAllMeasurements");
+  xhr.open("GET", "https://localhost:8080/RF_insight/api/DML/getAllMeasurements");
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {
@@ -108,7 +108,7 @@ document.getElementById("search-btn").addEventListener('click',function(){
   var xhr = new XMLHttpRequest();
   var long,lat;
   console.log(document.getElementById("address-search").value)
-  xhr.open("GET", "https://immense-journey-36861.herokuapp.com/analytics/forwardGeoCoding/"+ document.getElementById("address-search").value);
+  xhr.open("GET", "https://localhost:8080/RF_insight/api/forwardGeoCoding/"+ document.getElementById("address-search").value);
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {

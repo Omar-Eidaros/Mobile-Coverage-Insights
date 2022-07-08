@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Final_Final/AndroidApp/app/src/main/res/layout/activity_main.xml" value="0.1765625" />
+        <entry key="..\:/Final_Final/AndroidApp/app/src/main/res/layout/nav_header.xml" value="0.1765625" />
         <entry key="..\:/ITI Data/Graduation Project/Mobile-Coverage-Insights/AndroidApp/app/src/main/res/drawable/ic_device.xml" value="0.1" />
         <entry key="..\:/ITI Data/Graduation Project/Mobile-Coverage-Insights/AndroidApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1475" />
         <entry key="..\:/ITI Data/Graduation Project/Mobile-Coverage-Insights/AndroidApp/app/src/main/res/layout/activity_application.xml" value="0.20416666666666666" />
@@ -14,10 +16,11 @@
         <entry key="..\:/ITI Data/Graduation Project/Mobile-Coverage-Insights/AndroidApp/app/src/main/res/layout/fragment_sim.xml" value="0.20416666666666666" />
         <entry key="..\:/ITI Data/Graduation Project/Mobile-Coverage-Insights/AndroidApp/app/src/main/res/layout/nav_header.xml" value="0.1" />
         <entry key="..\:/ITI Data/Graduation Project/Mobile-Coverage-Insights/AndroidApp/app/src/main/res/menu/drawer_menu.xml" value="0.1" />
+        <entry key="..\:/torrent/Mobile-Coverage-Insights-master/AndroidApp/app/src/main/res/layout/activity_application.xml" value="0.559375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

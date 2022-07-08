@@ -1,11 +1,8 @@
 package com.insights.mesurements;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Counter {
 	int countriesNo;

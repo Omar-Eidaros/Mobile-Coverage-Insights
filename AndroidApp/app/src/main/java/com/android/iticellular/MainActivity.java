@@ -59,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
         phoneNumber = (EditText) findViewById(R.id.phoneNumber);
         submit_Btn = (Button) findViewById(R.id.submit_btn);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String phoneVerify=preferences.getString("phoneNumber","");
+        Log.e("phone number",phoneVerify);
+        if(!phoneVerify.equals("")){
+            SwitchToApp();
+        }
+
         submit_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void SwitchToApp() {
+        Intent switchActivityIntent = new Intent(this, ApplicationActivity.class);
+        startActivity(switchActivityIntent);
     }
 
     public static Boolean getDefaults(String key, Context context) {
@@ -119,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String saveData = data;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String URL = "http://192.168.1.2:8080/RF_insight/api/verification/sendCode";
+        String URL = "http://192.168.94.174:8080/RF_insight/api/verification/sendCode";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("msisdn", saveData);
@@ -127,12 +139,12 @@ public class MainActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.i("VOLLEY", response);
+                    Log.i("VOLLEY succ", response);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.i("VOLLEY", error.toString());
+                    Log.i("VOLLEY error", error.toString());
                 }
             }) {
                 @Override

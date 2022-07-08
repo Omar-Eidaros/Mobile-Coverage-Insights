@@ -2,7 +2,7 @@
 function fetchCount(){
   var time = document.getElementsByClassName('update-time');
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://immense-journey-36861.herokuapp.com/measurment/DML/countAll");
+  xhr.open("GET", "https://localhost:8080/RF_insight/api/DML/countAll");
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {

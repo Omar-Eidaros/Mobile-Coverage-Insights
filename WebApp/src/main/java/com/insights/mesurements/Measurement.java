@@ -143,19 +143,29 @@ public class Measurement {
 		db.connect();
 		  
 		   try {
-			result = db.DML("Insert into  measurements (cell_id,msisdn,cell_type,"
-					+ "mcc,mnc,country,operator,signal_strength_level,imei,imsi,latitude,longitude,device_model)"
-					+ " values("+measurement.getCell_id()+",'"+measurement.getMsisdn()+"','"+
-					measurement.getCell_type()+"',"+
-					measurement.getMcc()+","+measurement.getMnc()+",'"+measurement.getCountry()+
-					"','"+measurement.getOperator()+
-					"',"+measurement.getSignal_strength_level()+",'"+measurement.getImei()+
-					"',"+measurement.getImsi()+","+measurement.getLatitude()+","+
-					measurement.getLongitude()+",'"+measurement.getDevice_model()+"');");
-			
+			   result = db.DML("Insert into  measurements (cell_id,msisdn_id,cell_type,"
+					   + "mcc,mnc,country,operator,signal_strength_level,imei,imsi,latitude,longitude,device_model)"
+					   + " values("+measurement.getCell_id()+",'"+measurement.getMsisdn()+"','"+
+					   measurement.getCell_type()+"',"+
+					   measurement.getMcc()+","+measurement.getMnc()+",'"+measurement.getCountry()+
+					   "','"+measurement.getOperator()+
+					   "',"+measurement.getSignal_strength_level()+",'"+measurement.getImei()+
+					   "',"+measurement.getImsi()+","+measurement.getLatitude()+","+
+					   measurement.getLongitude()+",'"+measurement.getDevice_model()+"');");
+
+//			result = db.DML("Insert into  measurements (cell_id,msisdn,cell_type,"
+//					+ "mcc,mnc,country,operator,signal_strength_level,imei,imsi,latitude,longitude,device_model)"
+//					+ " values("+measurement.getCell_id()+",'"+measurement.getMsisdn()+"','"+
+//					measurement.getCell_type()+"',"+
+//					measurement.getMcc()+","+measurement.getMnc()+",'"+measurement.getCountry()+
+//					"','"+measurement.getOperator()+
+//					"',"+measurement.getSignal_strength_level()+",'"+measurement.getImei()+
+//					"',"+measurement.getImsi()+","+measurement.getLatitude()+","+
+//					measurement.getLongitude()+",'"+measurement.getDevice_model()+"');");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			   System.out.println("i am here");
 			e.printStackTrace();
 		}
 		   db.disconnect();
@@ -171,9 +181,9 @@ public static List<Measurement> getAllMeasurements()
 	List<Measurement> measurements = new ArrayList<Measurement>();
 	
 	try {
-		ResultSet rs = db.select("select id,cell_id,msisdn,cell_type,mcc,mnc,country,operator,avg(CAST(signal_strength_level as int)) as signal_strength_level,imei,imsi,latitude,longitude,device_model from measurements group by latitude,longitude,cell_id,msisdn,id,cell_type,mcc,mnc,country,operator,imei,imsi,device_model;");
+		ResultSet rs = db.select("select id,cell_id,msisdn_id,cell_type,mcc,mnc,country,operator,avg(CAST(signal_strength_level as int)) as signal_strength_level,imei,imsi,latitude,longitude,device_model from measurements group by latitude,longitude,cell_id,msisdn_id,id,cell_type,mcc,mnc,country,operator,imei,imsi,device_model;");
 		while (rs.next()) {
-			measurements.add(new Measurement(rs.getInt("id"),rs.getString("msisdn"), rs.getLong("cell_id"),rs.getString("cell_type"),rs.getInt("mcc"),rs.getInt("mnc"), rs.getString("country"),
+			measurements.add(new Measurement(rs.getInt("id"),rs.getString("msisdn_id"), rs.getLong("cell_id"),rs.getString("cell_type"),rs.getInt("mcc"),rs.getInt("mnc"), rs.getString("country"),
 					rs.getString("operator"), rs.getInt("signal_strength_level"),rs.getString("imei"), rs.getString("imsi"), rs.getString("latitude"), rs.getString("longitude"),rs.getString("device_model")));	
 	         
 	    }
@@ -194,11 +204,11 @@ public List<Measurement> getMeasurementsByOperator(String operator) {
 	List<Measurement> measurements = new ArrayList<Measurement>();
 	
 	try {
-		ResultSet rs = db.select("select id,cell_id,msisdn,cell_type,mcc,mnc,country,operator,avg(CAST(signal_strength_level as int)) as signal_strength_level,"
+		ResultSet rs = db.select("select id,cell_id,msisdn_id,cell_type,mcc,mnc,country,operator,avg(CAST(signal_strength_level as int)) as signal_strength_level,"
 				+ "imei,imsi,latitude,longitude,device_model from measurements where "
-				+ "operator ILIKE '"+operator+"' group by latitude,longitude,cell_id,msisdn,id,cell_type,mcc,mnc,country,operator,imei,imsi,device_model;");
+				+ "operator LIKE '"+operator+"' group by latitude,longitude,cell_id,msisdn_id,id,cell_type,mcc,mnc,country,operator,imei,imsi,device_model;");
 		while (rs.next()) {
-			measurements.add(new Measurement(rs.getInt("id"),rs.getString("msisdn"), rs.getLong("cell_id"),rs.getString("cell_type"),rs.getInt("mcc"),rs.getInt("mnc"), rs.getString("country"),
+			measurements.add(new Measurement(rs.getInt("id"),rs.getString("msisdn_id"), rs.getLong("cell_id"),rs.getString("cell_type"),rs.getInt("mcc"),rs.getInt("mnc"), rs.getString("country"),
 					rs.getString("operator"), rs.getInt("signal_strength_level"),rs.getString("imei"), rs.getString("imsi"), rs.getString("latitude"), rs.getString("longitude"),rs.getString("device_model"))); 
 	    }
 	     

@@ -46,17 +46,17 @@ public class Verification {
 
 		db.connect();
 		try {
-			rs = db.select("select count(*) from verification  where msisdn like '" + ver.getMsisdn() + "';");
+			rs = db.select("select count(*) from verfication  where msisdn like '" + ver.getMsisdn() + "';");
 			if (rs.next() && rs.getString("count").equals("1")) {
 				try {
-					result = db.DML("Update verification set verifCode = '" + ver.getVerifCode() + "' where msisdn='"
+					result = db.DML("Update verfication set verifiCode = '" + ver.getVerifCode() + "' where msisdn='"
 							+ ver.getMsisdn() + "';");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			} else {
 				try {
-					result = db.DML("Insert into  verification (msisdn,verifCode) VALUES ('" + ver.getMsisdn() + "','"
+					result = db.DML("Insert into  verfication (id,msisdn,verifiCode) VALUES ("+ver.getId()+" ,'" + ver.getMsisdn() + "','"
 							+ ver.getVerifCode() + "');");
 
 				} catch (SQLException e) {
@@ -76,8 +76,8 @@ public class Verification {
 		db.connect();
 		try {
 			System.out.println(ver.getMsisdn() + ":" + ver.getVerifCode());
-			ResultSet rs = db.select("select count(*) from verification  where msisdn like '" + ver.getMsisdn()
-					+ "' and verifcode like '" + ver.getVerifCode() + "';");
+			ResultSet rs = db.select("select count(*) from verfication  where msisdn like '" + ver.getMsisdn()
+					+ "' and verifiCode like '" + ver.getVerifCode() + "';");
 			if (rs.next()) {
 				y = rs.getString("count");
 			}
@@ -94,12 +94,35 @@ public class Verification {
 
 		String numbers = "0123456789";
 		Random random = new Random();
-		char[] code = new char[length];
-
+		//char[] code = new char[length];
+String result="";
 		for (int i=0; i < length; i++)
 		{
-			code[i] = numbers.charAt(random.nextInt(numbers.length()));
+			//code[i] = numbers.charAt(random.nextInt(numbers.length()));
+			result+=random.nextInt(numbers.length());
+
 		}
-		return code.toString();
+
+		return result;
 	}
+//public String generateCode(int n) {
+//
+//	// chose a Character random from this String
+//	String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "abcdefghijklmnopqrstuvxyz";
+//
+//	// create StringBuffer size of AlphaNumericString
+//	StringBuilder sb = new StringBuilder(n);
+//
+//	for (int i = 0; i < n; i++) {
+//
+//		// generate a random number between
+//		// 0 to AlphaNumericString variable length
+//		int index = (int) (AlphaNumericString.length() * Math.random());
+//
+//		// add Character one by one in end of sb
+//		sb.append(AlphaNumericString.charAt(index));
+//	}
+//
+//	return sb.toString();
+//}
 }

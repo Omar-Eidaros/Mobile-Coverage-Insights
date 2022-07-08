@@ -88,10 +88,10 @@ public class VerficationActivity extends AppCompatActivity {
     private void Submit(String data) {
         final String savedata = data;
         Bundle phoneNum = getIntent().getExtras();
-        final String phone = phoneNum.getString("phone");
+        final String phone = phoneNum.getString("phoneNum");
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            String URL = "http://192.168.1.2:8080/RF_insight/api/verification/isCodeValid";
+            String URL = "http://192.168.94.174:8080/RF_insight/api/verification/isCodeValid";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("msisdn", phone);
             jsonBody.put("verifCode", savedata);

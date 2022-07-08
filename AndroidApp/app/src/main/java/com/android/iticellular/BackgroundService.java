@@ -18,11 +18,11 @@ public class BackgroundService extends Service {
 
         try {
             if(ApplicationActivity.firstSIM.get("imsi") != null){
-                new CallAPI().execute("", ApplicationActivity.firstSIM.toString());
+                new CallAPI().execute("http://192.168.94.174:8080/RF_insight/api/DML/post", ApplicationActivity.firstSIM.toString());
             }
 
             if(ApplicationActivity.secondSIM.get("imsi") != null){
-                new CallAPI().execute("", ApplicationActivity.secondSIM.toString());
+                new CallAPI().execute("http://192.168.94.174:8080/RF_insight/api/DML/post", ApplicationActivity.secondSIM.toString());
             }
 
         } catch (JSONException e) {

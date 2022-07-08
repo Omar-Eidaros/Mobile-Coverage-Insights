@@ -1,0 +1,13 @@
+POST : http://localhost:8080/RF_insight/api/verification/sendCode
+
+{
+    "msisdn":"01011535461"
+}
+
+
+POST : http://localhost:8080/RF_insight/api/verification/isCodeValid
+
+{
+    "msisdn":"01011535461",
+    "verifCode":"55598"
+}
